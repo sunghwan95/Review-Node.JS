@@ -1,0 +1,10 @@
+//- html 블럭을 리턴하는 일종의 pug전용 함수. node.js에서 던져주는 데이터를 인자로 받음.
+//- mixin은 같은 형태의 html을 리턴하지만 다른 데이터를 받아야할 때 사용.
+mixin makeVideoDiv(arg)
+  div
+    h4= arg.title
+    ul
+      li #{ arg.rating } / 5
+      li #{ arg.comments } / comments
+      li Posted #{ arg.createdAt }
+      li #{ arg.views } / views
