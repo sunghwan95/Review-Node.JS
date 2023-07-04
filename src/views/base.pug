@@ -1,0 +1,18 @@
+doctype html
+html(lant="ko")
+  head
+    //- controller에서 pageTitle 변수를 받아옴
+    title #{ pageTitle } page
+  body
+    header
+      nav
+        ul
+          if testUser.loggedIn
+            li
+              a(href="#") Logout
+          else
+            li
+              a(href="/login") Login
+      h1= pageTitle
+    block content
+  include ./partials/footer.pug

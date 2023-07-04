@@ -1,0 +1,13 @@
+extends base.pug
+include mixins/video
+
+block content
+  h1 Home Page!
+  ul
+    //- iteration
+    each data in testDB
+      li= data
+      //- +makeVideoDiv(data) mixin사용
+    //- 순회할 데이터가 없다면
+    else
+      li 아무것도 없음

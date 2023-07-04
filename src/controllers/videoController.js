@@ -1,14 +1,19 @@
+const testUser = {
+  username: "sunghwan",
+  loggedIn: false,
+};
+
 export const home = (req, res, next) => {
-  return res.send("Home");
+  const testDB = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  return res.render("home", { pageTitle: "Home", testUser, testDB }); // pug에 변수 보내주기
 };
 
 export const watch = (req, res, next) => {
-  console.log(req.params.id);
-  return res.send("Watch Video");
+  res.render("watch", { pageTitle: "Watch" });
 };
 
 export const edit = (req, res, next) => {
-  return res.send("Edit vidoe");
+  res.render("edit", { pageTitle: "Edit" });
 };
 
 export const upload = (req, res, next) => {
