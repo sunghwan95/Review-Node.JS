@@ -10,12 +10,15 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",
     "@babel/node": "^7.22.5",
     "@babel/preset-env": "^7.22.5",
-    "nodemon": "^2.0.22"
+    "@prettier/plugin-pug": "^2.5.1",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8"
   }
 }
