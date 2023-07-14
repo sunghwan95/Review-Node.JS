@@ -2,8 +2,8 @@ doctype html
 html(lant="ko")
   head
     //- controller에서 pageTitle 변수를 받아옴
-    title #{ pageTitle } page
-    link(rel="stylesheet" href="https://unpkg.com/mvp.css")
+    title #{ pageTitle } | #{ sitename }
+    link(rel="stylesheet", href="https://unpkg.com/mvp.css")
   body
     header
       h1= pageTitle
@@ -11,9 +11,19 @@ html(lant="ko")
         ul
           li
             a(href="/") Home
+          if loggedIn
+            li
+              a(href="#") #{ loggedInUser.name }'s Profile
+            li
+              a(href="/logout") Logout
+          else
+            li
+              a(href="/login") Login
+            li
+              a(href="/join") Join
           li
             a(href="/videos/upload") Upload
-          li 
+          li
             a(href="/search") Search
     main
       block content

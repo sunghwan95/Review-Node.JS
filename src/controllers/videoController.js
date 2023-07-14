@@ -13,7 +13,7 @@ export const watch = async (req, res, next) => {
   const { id } = req.params;
   const video = await Video.findById(id);
   if (video === null) {
-    return res.render("404", { pageTitle: "Video not found" });
+    return res.status(404).render("404", { pageTitle: "Video not found" });
   }
   return res.render("watch", { pageTitle: video.title, video });
 };
@@ -22,7 +22,7 @@ export const getEdit = async (req, res, next) => {
   const { id } = req.params;
   const video = await Video.findById(id);
   if (video === null) {
-    return res.render("404", { pageTitle: "Video not found" });
+    return res.status(404).render("404", { pageTitle: "Video not found" });
   }
   return res.render("edit", { pageTitle: `Editing ${video.title}`, video });
 };
@@ -32,7 +32,7 @@ export const postEdit = async (req, res, next) => {
   const { title, description, hashtags } = req.body;
   const video = await Video.exists({ _id: id }); //몽고db의 id(==_id)와 파라미터로 받은 id(==id)가 일치하는지 확인
   if (!video) {
-    return res.render("404");
+    return res.status(404).render("404", { pageTitle: "Video not found" });
   }
   await Video.findByIdAndUpdate(id, {
     title,
@@ -56,8 +56,7 @@ export const postUpload = async (req, res, next) => {
     });
     return res.redirect("/");
   } catch (err) {
-    console.log(err);
-    return res.render("upload", {
+    return res.status(400).render("upload", {
       pageTitle: "Upload Video",
       errorMsg: err._message,
     });
