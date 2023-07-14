@@ -1,0 +1,22 @@
+extends base
+
+block content
+  if errMesssage
+    span= errMessage
+  form(method="POST")
+    input(placeholder="이름", type="text", name="name", required)
+    input(placeholder="E-mail", type="email", name="email", required)
+    input(placeholder="ID", type="text", name="username", required)
+    input(placeholder="Password", type="password", name="password", required)
+    input(
+      placeholder="Password 확인",
+      type="password",
+      name="password2",
+      required
+    )
+    input(placeholder="위치", type="text", name="location", required)
+    input(type="submit", value="Join")
+  hr
+  div
+    span 이미 존재하는 계정입니까? &nbsp;
+    a(href="/login") 로그인하러 가기 &rarr;

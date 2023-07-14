@@ -4,12 +4,14 @@
   "description": "Review Node.js",
   "main": "index.js",
   "scripts": {
-    "file": "nodemon --exec babel-node src/init"
+    "file": "nodemon --exec babel-node src/server"
   },
   "author": "sunghwan",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "mongoose": "^7.3.2",
     "morgan": "^1.10.0",
     "pug": "^3.0.2"
@@ -20,6 +22,6 @@
     "@babel/preset-env": "^7.22.5",
     "@prettier/plugin-pug": "^2.5.1",
     "nodemon": "^2.0.22",
-    "prettier": "^3.0.0"
+    "prettier": "^2.8.8"
   }
 }

@@ -1,0 +1,13 @@
+extends base
+
+block content
+  if errMesssage
+    span= errMessage
+  form(method="POST")
+    input(placeholder="ID", type="text", name="username", required)
+    input(placeholder="Password", type="password", name="password", required)
+    input(type="submit", value="Login")
+  hr
+  div
+    span 계정이 없으신가요? &nbsp;
+    a(href="/join") 회원 가입하러 가기 &rarr;
