@@ -2,12 +2,11 @@ extends base.pug
 include mixins/video
 
 block content
-  h1 Home Page!
+  h1 비디오 리스트
   ul
     //- iteration
-    each data in testDB
-      li= data
-      //- +makeVideoDiv(data) mixin사용
-    //- 순회할 데이터가 없다면
+    each video in videos
+      //- mixin사용
+      +makeVideoDiv(video)
     else
-      li 아무것도 없음
+      span.empty_message No Videos found

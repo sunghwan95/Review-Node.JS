@@ -3,16 +3,18 @@ html(lant="ko")
   head
     //- controller에서 pageTitle 변수를 받아옴
     title #{ pageTitle } page
+    link(rel="stylesheet" href="https://unpkg.com/mvp.css")
   body
     header
+      h1= pageTitle
       nav
         ul
-          if testUser.loggedIn
-            li
-              a(href="#") Logout
-          else
-            li
-              a(href="/login") Login
-      h1= pageTitle
-    block content
+          li
+            a(href="/") Home
+          li
+            a(href="/videos/upload") Upload
+          li 
+            a(href="/search") Search
+    main
+      block content
   include ./partials/footer.pug
