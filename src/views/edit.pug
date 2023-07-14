@@ -1,4 +1,19 @@
 extends base.pug
 
 block content
-  h1 Edit Page!
+  h4 비디오 정보 변경하기
+  form(method="POST")
+    input(placeholder="video title", value=video.title, name="title", required)
+    input(
+      placeholder="description",
+      required,
+      name="description",
+      value=video.description
+    )
+    input(
+      placeholder="hash tags",
+      required,
+      name="hashtags",
+      value=video.hashtags.join()
+    )
+    input(value="save", type="submit")
