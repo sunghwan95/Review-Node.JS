@@ -1,6 +1,5 @@
 import User from "../models/User";
 import bcrypt from "bcrypt";
-import fetch from "node-fetch";
 
 export const getJoin = (req, res, next) => {
   return res.render("join", { pageTitle: "회원 가입" });
@@ -96,7 +95,6 @@ export const endGithubLogin = async (req, res, next) => {
   };
   const params = new URLSearchParams(config).toString();
   const final_url = `${base_url}?${params}`;
-
   const tokenReq = await (
     await fetch(final_url, {
       method: "POST",
@@ -105,7 +103,6 @@ export const endGithubLogin = async (req, res, next) => {
       },
     })
   ).json();
-
   if ("access_token" in tokenReq) {
     const { access_token } = tokenReq;
     const apiUrl = "https:///api.github.com";
@@ -123,14 +120,12 @@ export const endGithubLogin = async (req, res, next) => {
         },
       })
     ).json();
-
     const emailObj = emailData.find(
       (email) => email.primary === true && email.verified === true
     );
     if (!emailObj) {
       return res.redirect("/login");
     }
-
     let user = await User.findOne({ email: emailObj.email });
     if (!user) {
       user = await User.create({
