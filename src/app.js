@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import session from "express-session";
+import MongoStore from "connect-mongo";
 import rootRouter from "./routers/rootRouter";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
@@ -17,9 +18,15 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   session({
-    secret: "MySecret",
-    resave: true,
-    saveUninitialized: true,
+    secret: process.env.COOKIE_SECRET,
+    resave: false, //로그인한 유저에게만 쿠키 부여 -> db에 세션 저장.
+    saveUninitialized: false, //세션이 초기화 될 때만 db에 세션 저장.
+    cookie: {
+      maxAge: 8.64e7,
+    },
+    store: MongoStore.create({
+      mongoUrl: process.env.DB_URL,
+    }),
   })
 );
 
