@@ -43,7 +43,7 @@ export const postEdit = async (req, res, next) => {
 };
 
 export const upload = (req, res, next) => {
-  return res.render("upload", { pageTitle: "Upload Video" });
+  return res.render("upload", { pageTitle: "Upload" });
 };
 
 export const postUpload = async (req, res, next) => {
