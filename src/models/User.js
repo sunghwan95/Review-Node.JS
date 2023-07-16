@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  videos: [{ type: mongoose.Schema.Types.ObjectId, reference: "Video" }],
+  videos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }],
   location: String,
 });
 

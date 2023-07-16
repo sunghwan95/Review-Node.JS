@@ -1,7 +1,6 @@
 doctype html
 html(lant="ko")
   head
-    //- controller에서 pageTitle 변수를 받아옴
     title #{ pageTitle } | #{ sitename }
     link(rel="stylesheet", href="https://unpkg.com/mvp.css")
   body
@@ -29,4 +28,5 @@ html(lant="ko")
             a(href="/search") 검색
     main
       block content
-  include ./partials/footer.pug
+    include ./partials/footer.pug
+    block scripts
