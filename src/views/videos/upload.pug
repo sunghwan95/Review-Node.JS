@@ -1,9 +1,11 @@
-extends base.pug
+extends ../base
 
 block content
   if errorMsg
     span= errorMsg
-  form(method="post")
+  form(method="post", enctype="multipart/form-data")
+    label(for="video") 비디오 업로드
+    input#video(type="file", accept="video/*", required, name="video")
     input(placeholder="title", type="text", required, name="title")
     input(placeholder="description", type="text", required, name="description")
     input(placeholder="hashtags", type="text", required, name="hashtags")
