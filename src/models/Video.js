@@ -2,12 +2,18 @@ import mongoose from "mongoose";
 
 const videoSchema = new mongoose.Schema({
   title: { type: String, required: true, trim: true },
+  fileUrl: { type: String, required: true },
   description: String,
   createdAt: { type: Date, default: Date.now }, //비디오를 생성할 때만 Date.now 함수 실행
   hashtags: [{ type: String, trim: true }],
   meta: {
     views: { type: Number, default: 0 },
     rating: { type: Number, default: 0 },
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    reference: "User",
   },
 });
 

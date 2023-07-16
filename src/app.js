@@ -38,6 +38,7 @@ app.use((req, res, next) => {
 });
 
 app.use(localsMiddleware);
+app.use("/uploads", express.static("uploads")); // uploads로 시작하는 url이 있다면 express가 uploads폴더의 내용을 보여주도록함.
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
