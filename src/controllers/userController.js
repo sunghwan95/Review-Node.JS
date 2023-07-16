@@ -294,6 +294,7 @@ export const postChangePw = async (req, res, next) => {
 export const see = async (req, res, next) => {
   const { id } = req.params;
   const user = await User.findById(id).populate("videos");
+  console.log("유저정보", user);
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User not found" });
   }

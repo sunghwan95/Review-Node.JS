@@ -39,6 +39,6 @@ export const multerMiddlewareAvatar = multer({
 export const multerMiddlewareVideo = multer({
   dest: "uploads/videos",
   limits: {
-    fileSize: 1e7,
+    //fileSize: 1e7,
   },
 });

@@ -12,13 +12,13 @@ export const home = async (req, res, next) => {
 
 export const watch = async (req, res, next) => {
   const { id } = req.params;
-  const video = await Video.findById(id).populate("owner"); //owner라는 데이터가 가지고 있는 id를 User모델에서 찾아서 가지고옴.
-  console.log(video);
+  const video = await Video.findById(id).populate("owner"); //연결된owner를 통해 owner의 데이터를 User모델에서 찾아서 가지고옴.
+  console.log("비디오 정보:", video);
 
   if (video === null) {
     return res.status(404).render("404", { pageTitle: "Video not found" });
   }
-
+  console.log("로그인 유저:", res.locals.loggedInUser);
   return res.render("videos/watch", { pageTitle: video.title, video });
 };
 
@@ -121,4 +121,15 @@ export const search = async (req, res) => {
   }
 
   return res.render("search", { pageTitle: "Search", videos });
+};
+
+export const registerView = async (req, res, next) => {
+  const { id } = req.params;
+  const video = await Video.findById(id);
+  if (!video) {
+    return res.sendStatus(404);
+  }
+  video.meta.views = video.meta.views + 1;
+  await video.save();
+  return res.sendStatus(200);
 };
